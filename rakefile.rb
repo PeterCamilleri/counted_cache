@@ -8,3 +8,9 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task :default => :test
+
+desc "What version of counted_cache is this?"
+task :vers do |t|
+  puts
+  puts "counted_cache version = #{::CountedCache::VERSION}"
+end
