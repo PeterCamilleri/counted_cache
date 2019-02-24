@@ -8,6 +8,7 @@ require_relative 'counted_cache/version'
 
 class CountedCache
 
+  # How many data elements should be retained.
   attr_reader :depth
 
   def initialize(depth = 10, &block)
