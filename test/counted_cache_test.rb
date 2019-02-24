@@ -16,7 +16,4 @@ class CountedCacheTest < Minitest::Test
     assert(::CountedCache::DESCRIPTION.is_a?(String))
   end
 
-  def test_it_does_something_useful
-    assert(false)
-  end
 end

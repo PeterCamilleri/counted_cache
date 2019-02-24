@@ -2,6 +2,6 @@
 
 require_relative 'counted_cache/version'
 
-module CountedCache
+class CountedCache
   # Application code goes here!
 end
