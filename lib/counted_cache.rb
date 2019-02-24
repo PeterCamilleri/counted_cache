@@ -1,6 +1,7 @@
-require "counted_cache/version"
+# counted_cache
+
+require_relative 'counted_cache/version'
 
 module CountedCache
-  class Error < StandardError; end
-  # Your code goes here...
+  # Application code goes here!
 end
