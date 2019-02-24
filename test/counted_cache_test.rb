@@ -16,4 +16,8 @@ class CountedCacheTest < Minitest::Test
     assert(::CountedCache::DESCRIPTION.is_a?(String))
   end
 
+  def test_for_the_support_protocol
+    assert_nil(Object.new.count_cache_item_removed(:key))
+  end
+
 end
