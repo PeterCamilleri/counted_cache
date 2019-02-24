@@ -1,5 +1,5 @@
 module CountedCache
-  VERSION = "0.1.0".freeze
+  VERSION = "0.2.0".freeze
 
-  DESCRIPTION = "counted_cache: TODO A description.".freeze
+  DESCRIPTION = "counted_cache: A cache for mostly read data with a high cost of retrieval.".freeze
 end

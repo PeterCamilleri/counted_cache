@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
   spec.summary       = CountedCache::DESCRIPTION
-  spec.description   = "TODO: A longer description or just delete this line."
+  spec.description   = "A cache for read mostly data with a high cost of retrieval."
   spec.homepage      = "https://github.com/PeterCamilleri/counted_cache"
   spec.license       = "MIT"
 
