@@ -8,5 +8,8 @@ require_relative 'counted_cache/version'
 
 class CountedCache
 
+  def initialize(&block)
+    fail "A data loading block is required" unless block_given?
+  end
 
 end
