@@ -8,8 +8,11 @@ require_relative 'counted_cache/version'
 
 class CountedCache
 
-  def initialize(&block)
+  attr_reader :depth
+
+  def initialize(depth = 10, &block)
     fail "A data loading block is required" unless block_given?
+    @depth = depth
   end
 
 end

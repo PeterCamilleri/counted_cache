@@ -18,6 +18,9 @@ class CountedCacheTest < Minitest::Test
 
   def test_creating_these_caches
     assert_raises { ::CountedCache.new }
+
+    a_cache = CountedCache.new { |_cache, key| key }
+    assert_equal(10, a_cache.depth)
   end
 
   def test_for_the_support_protocol
