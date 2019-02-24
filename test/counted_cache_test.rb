@@ -17,7 +17,7 @@ class CountedCacheTest < Minitest::Test
   end
 
   def test_for_the_support_protocol
-    assert_nil(Object.new.count_cache_item_removed(:key))
+    assert_nil(Object.new.counted_cache_item_removed(:key))
   end
 
 end
