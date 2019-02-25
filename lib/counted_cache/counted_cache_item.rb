@@ -21,11 +21,13 @@ class CountedClassItem
     @data == EMPTY
   end
 
+  # Erase the data associated with the given key.
   def purge(key)
     @data.counted_cache_item_removed(key)
     @data = EMPTY
   end
 
+  # Retrieve the data, maintain a reference count.
   def data
     @count += 1
     @data
