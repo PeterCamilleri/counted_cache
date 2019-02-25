@@ -18,6 +18,7 @@ class CountedCacheTest < Minitest::Test
 
   def test_creating_these_caches
     assert_raises { ::CountedCache.new }
+    assert_raises { ::CountedCache.new("foobar") { |key| key } }
 
     a_cache = CountedCache.new { |key| key }
     assert_equal(10, a_cache.depth)

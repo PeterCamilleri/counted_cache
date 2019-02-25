@@ -8,14 +8,15 @@ require_relative 'counted_cache/version'
 
 class CountedCache
 
-  # How many data elements should be retained.
+  # How many data elements should be retained?
   attr_reader :depth
 
   # Setup the cache
   def initialize(depth = 10, &block)
     fail "A data loading block is required" unless block_given?
+
     @block = block
-    @depth = depth
+    self.depth = depth
     @key_space  = Hash.new { |hash, key| hash[key] = CountedClassItem.new }
     @data_space = Array.new
   end
@@ -29,6 +30,13 @@ class CountedCache
     end
 
     item.data
+  end
+
+  # Set the new depth.
+  def depth=(value)
+    value = value.to_i
+    fail "The depth must be greater than zero." if value < 1
+    @depth = value
   end
 
 end
