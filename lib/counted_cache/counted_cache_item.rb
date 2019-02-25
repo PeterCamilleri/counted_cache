@@ -12,8 +12,8 @@ class CountedClassItem
 
   # Setup an empty data item.
   def initialize(key)
-    @data = EMPTY
-    @key = key
+    @data  = EMPTY
+    @key   = key
     @count = 0
   end
 

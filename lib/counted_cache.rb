@@ -15,10 +15,10 @@ class CountedCache
   def initialize(depth = 10, &block)
     fail "A data loading block is required" unless block_given?
 
-    @block = block
-    @key_space  = Hash.new { |hash, key| hash[key] = CountedClassItem.new(key) }
+    @block      = block
+    @key_space  = Hash.new {|hash, key| hash[key] = CountedClassItem.new(key)}
     @data_space = Array.new
-    self.depth = depth
+    self.depth  = depth
   end
 
   # Get a data item.
