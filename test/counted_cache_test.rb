@@ -30,6 +30,7 @@ class CountedCacheTest < Minitest::Test
   def test_creating_items
     an_item = CountedClassItem.new
     assert(an_item.empty?)
+    assert_equal(0, an_item.count)
   end
 
   def test_for_the_support_protocol
