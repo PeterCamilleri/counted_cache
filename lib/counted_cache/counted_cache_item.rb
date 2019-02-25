@@ -11,8 +11,9 @@ class CountedClassItem
   attr_writer :data
 
   # Setup an empty data item.
-  def initialize
+  def initialize(key)
     @data = EMPTY
+    @key = key
     @count = 0
   end
 
@@ -22,8 +23,8 @@ class CountedClassItem
   end
 
   # Erase the data associated with the given key.
-  def purge(key)
-    @data.counted_cache_item_removed(key)
+  def purge
+    @data.counted_cache_item_removed(@key)
     @data = EMPTY
   end
 

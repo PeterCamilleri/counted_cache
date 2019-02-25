@@ -31,14 +31,14 @@ class CountedCacheTest < Minitest::Test
   end
 
   def test_creating_items
-    an_item = CountedClassItem.new
+    an_item = CountedClassItem.new("foo")
     assert(an_item.empty?)
     assert_equal(0, an_item.count)
     an_item.data = "foo"
     refute(an_item.empty?)
     assert_equal("foo", an_item.data)
     assert_equal(1, an_item.count)
-    an_item.purge(nil)
+    an_item.purge
     assert(an_item.empty?)
   end
 
