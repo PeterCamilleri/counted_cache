@@ -46,10 +46,12 @@ private
 
   # Make sure the data space has at least one free slot.
   def adjust_cache
-    @data_space.sort_by!(&:count)
+    if @data_space.length >= @depth
+      @data_space.sort_by!(&:count)
 
-    while @data_space.length >= @depth
-      @data_space.shift.purge
+      while @data_space.length >= @depth
+        @data_space.shift.purge
+      end
     end
   end
 
