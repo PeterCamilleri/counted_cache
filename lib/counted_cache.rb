@@ -11,6 +11,12 @@ class CountedCache
   # How many data elements should be retained?
   attr_reader :depth
 
+  # How many times was data found in the cache?
+  attr_reader :hits
+
+  # How many times was data not in the cache?
+  attr_reader :misses
+
   # Setup the cache
   def initialize(depth = 10, &block)
     fail "A data loading block is required" unless block_given?
@@ -19,6 +25,8 @@ class CountedCache
     @key_space  = Hash.new {|hash, key| hash[key] = CountedClassItem.new(key)}
     @data_space = Array.new
     self.depth  = depth
+    @hits       = 0
+    @misses     = 0
   end
 
   # Get a data item.
@@ -29,6 +37,9 @@ class CountedCache
       item.data = @block.call(key)
       adjust_cache
       @data_space << item
+      @misses += 1
+    else
+      @hits += 1
     end
 
     item.data
