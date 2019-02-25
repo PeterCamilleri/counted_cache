@@ -19,12 +19,14 @@ class CountedCacheTest < Minitest::Test
   def test_creating_these_caches
     assert_raises { ::CountedCache.new }
 
-    a_cache = CountedCache.new { |_cache, key| key }
+    a_cache = CountedCache.new { |key| key }
     assert_equal(10, a_cache.depth)
 
-    a_cache = CountedCache.new(20) { |_cache, key| key }
+    a_cache = CountedCache.new(20) { |key| key }
     assert_equal(20, a_cache.depth)
 
+    assert_equal("foo", a_cache["foo"])
+    assert_equal(a_cache["foo"].object_id, a_cache["foo"].object_id)
   end
 
   def test_creating_items
