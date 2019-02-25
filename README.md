@@ -22,7 +22,18 @@ Or install it yourself as:
 
 ## Usage
 
-WIP
+Creating a counted cache is as simple as:
+
+```ruby
+cache_on_hand = CountedCache.new(10) {|key| retrieve_data_for(key) }
+```
+
+Where:
+
+* The argument is the optional cache depth, which is the number of data
+items kept in the cache.
+* The required block is used to fetch the data associated with the key when
+that data is needed, but not in the cache.
 
 ## Contributing
 1. Fork it
