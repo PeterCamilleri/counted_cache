@@ -32,8 +32,11 @@ class CountedCacheTest < Minitest::Test
     assert(an_item.empty?)
     assert_equal(0, an_item.count)
     an_item.data = "foo"
+    refute(an_item.empty?)
     assert_equal("foo", an_item.data)
     assert_equal(1, an_item.count)
+    an_item.purge(nil)
+    assert(an_item.empty?)
   end
 
   def test_for_the_support_protocol
