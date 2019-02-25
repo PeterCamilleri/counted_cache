@@ -7,6 +7,9 @@ class CountedClassItem
   # The reference count of this item.
   attr_reader :count
 
+  # Let the data be set.
+  attr_writer :data
+
   # Setup an empty data item.
   def initialize
     @data = EMPTY
@@ -21,5 +24,9 @@ class CountedClassItem
   def purge(key)
     @data.counted_cache_item_removed(key)
     @data = EMPTY
+  end
+
+  def data
+    @data
   end
 end
