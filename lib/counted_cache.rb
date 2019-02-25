@@ -35,7 +35,7 @@ class CountedCache
 
     if item.empty?
       item.data = @block.call(key)
-      adjust_cache
+      adjust_cache(1)
       @data_space << item
       @misses += 1
     else
@@ -50,19 +50,24 @@ class CountedCache
     value = value.to_i
     fail "The depth must be greater than zero." if value < 1
     @depth = value
-    adjust_cache
+    adjust_cache(0)
+  end
+
+  # How many cache slots are free?
+  def free
+    @depth - @data_space.length
   end
 
 private
 
   # Make sure the data space has at least one free slot.
-  def adjust_cache
-    if @data_space.length >= @depth
-      @data_space.sort_by!(&:count)
+  def adjust_cache(reserve)
+    return if free >= reserve
 
-      while @data_space.length >= @depth
-        @data_space.shift.purge
-      end
+    @data_space.sort_by!(&:count)
+
+    while free != reserve
+      @data_space.shift.purge
     end
   end
 

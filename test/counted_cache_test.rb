@@ -48,4 +48,14 @@ class CountedCacheTest < Minitest::Test
     assert_nil(Object.new.counted_cache_item_removed(:key))
   end
 
+  def test_for_caching
+    a_cache = CountedCache.new(2) { |key| key }
+    assert_equal(2, a_cache.depth)
+    assert_equal(2, a_cache.free)
+    assert_equal(0, a_cache.hits)
+    assert_equal(0, a_cache.misses)
+
+
+  end
+
 end
