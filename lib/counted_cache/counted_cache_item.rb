@@ -27,6 +27,7 @@ class CountedClassItem
   end
 
   def data
+    @count += 1
     @data
   end
 end

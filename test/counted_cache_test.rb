@@ -33,6 +33,7 @@ class CountedCacheTest < Minitest::Test
     assert_equal(0, an_item.count)
     an_item.data = "foo"
     assert_equal("foo", an_item.data)
+    assert_equal(1, an_item.count)
   end
 
   def test_for_the_support_protocol
