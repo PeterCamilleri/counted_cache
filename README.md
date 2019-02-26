@@ -46,6 +46,24 @@ extras to determine how well the cache is working. The hits and misses
 properties record how many times the data was found in the cache (a hit) and
 how many times it had to be retrieved (a miss).
 
+### Removing data from the cache.
+
+At some point, data items will need to be removed from the cache to make room
+for newer data requests.
+
+Normally when this happens, the old data can go away and no further action
+needs to be taken. In some cases however, modified data will need to be written
+out to save any changes that may have been made to that data. To accommodate
+this need, the class Object defines the method:
+
+```ruby
+counted_cache_item_removed(key)
+```
+
+By default, the implementation in the Object class does nothing. In cases where
+some action needs to be taken, this method should be defined in the target
+cache data.
+
 ### Example
 
 Consider the case of an application that uses embedded ruby (erb) files. This
