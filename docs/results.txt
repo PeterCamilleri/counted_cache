@@ -1,15 +1,15 @@
-C:\Sites\counted_cache
-20 mysh>ruby --version
+*** Results of demo/test/benchmark ***
+
 ruby 2.3.3p222 (2016-11-21 revision 56859) [i386-mingw32]
-C:\Sites\counted_cache
-21 mysh>docs\bench.rb
+
 Warming up --------------------------------------
             no_cache     1.000  i/100ms
           with_cache     1.000  i/100ms
 Calculating -------------------------------------
-            no_cache      2.069  (± 0.0%) i/s -     11.000  in   5.317633s
-          with_cache      4.640  (± 0.0%) i/s -     24.000  in   5.172239s
+            no_cache      1.088  (± 0.0%) i/s -      6.000  in   5.514220s
+          with_cache      2.669  (± 0.0%) i/s -     14.000  in   5.245751s
 
 Comparison:
-          with_cache:        4.6 i/s
-            no_cache:        2.1 i/s - 2.24x  slower
+          with_cache:        2.7 i/s
+            no_cache:        1.1 i/s - 2.45x  slower
+
