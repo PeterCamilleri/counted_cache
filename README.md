@@ -53,16 +53,9 @@ for newer data requests.
 
 Normally when this happens, the old data can go away and no further action
 needs to be taken. In some cases however, modified data will need to be written
-out to save any changes that may have been made to that data. To accommodate
-this need, the class Object defines the method:
+out to save any changes that may have been made to that data.
 
-```ruby
-counted_cache_item_removed(key)
-```
-
-By default, the implementation in the Object class does nothing. In cases where
-some action needs to be taken, this method should be defined in the target
-cache data.
+WIP
 
 ### Example
 
