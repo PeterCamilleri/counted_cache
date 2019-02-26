@@ -6,10 +6,9 @@ Warming up --------------------------------------
             no_cache     1.000  i/100ms
           with_cache     1.000  i/100ms
 Calculating -------------------------------------
-            no_cache      1.088  (± 0.0%) i/s -      6.000  in   5.514220s
-          with_cache      2.669  (± 0.0%) i/s -     14.000  in   5.245751s
+            no_cache      0.850  (± 0.0%) i/s -      5.000  in   5.882731s
+          with_cache      2.085  (± 0.0%) i/s -     11.000  in   5.274904s
 
 Comparison:
-          with_cache:        2.7 i/s
-            no_cache:        1.1 i/s - 2.45x  slower
-
+          with_cache:        2.1 i/s
+            no_cache:        0.8 i/s - 2.45x  slower

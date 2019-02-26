@@ -22,7 +22,7 @@ class CountedCache
 
     @load_block = load_block
     @save_block = Proc.new {}
-    @key_space  = Hash.new {|hash, key| hash[key] = CountedClassItem.new(key)}
+    @key_space  = Hash.new {|hash, key| hash[key] = CountedCacheItem.new(key)}
     @data_space = Array.new
     self.depth  = depth
     @hits       = 0

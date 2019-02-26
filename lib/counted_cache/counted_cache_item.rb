@@ -1,8 +1,8 @@
 # A container for items in a counted cache.
-class CountedClassItem
+class CountedCacheItem
 
   # A marker for empty items.
-  EMPTY = :counted_class_item_empty
+  EMPTY = :counted_cache_item_empty
 
   # The reference count of this item.
   attr_reader :count

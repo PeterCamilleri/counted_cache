@@ -33,7 +33,7 @@ class CountedCacheTest < Minitest::Test
   end
 
   def test_creating_items
-    an_item = CountedClassItem.new("foo")
+    an_item = CountedCacheItem.new("foo")
     assert(an_item.empty?)
     assert_equal(0, an_item.count)
     an_item.data = "foo"
