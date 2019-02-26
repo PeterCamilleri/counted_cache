@@ -18,10 +18,10 @@ class CountedCache
   attr_reader :misses
 
   # Setup the cache
-  def initialize(depth = 10, &block)
+  def initialize(depth = 10, &load_block)
     fail "A data loading block is required" unless block_given?
 
-    @block      = block
+    @load_block = load_block
     @key_space  = Hash.new {|hash, key| hash[key] = CountedClassItem.new(key)}
     @data_space = Array.new
     self.depth  = depth
@@ -34,7 +34,7 @@ class CountedCache
     item = @key_space[key]
 
     if item.empty?
-      item.data = @block.call(key)
+      item.data = @load_block.call(key)
       adjust_cache(1)
       @data_space << item
       @misses += 1
