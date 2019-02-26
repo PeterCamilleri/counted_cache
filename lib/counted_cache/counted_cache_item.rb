@@ -24,7 +24,6 @@ class CountedClassItem
 
   # Erase the data associated with the given key.
   def purge
-    @data.counted_cache_item_removed(@key)
     @data = EMPTY
   end
 
