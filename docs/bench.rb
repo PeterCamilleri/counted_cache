@@ -34,9 +34,7 @@ def with_cache
 end
 
 Benchmark.ips do |x|
-
   x.report("no_cache") { no_cache }
   x.report("with_cache") { with_cache }
-
   x.compare!
 end
