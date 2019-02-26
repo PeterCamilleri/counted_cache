@@ -53,9 +53,15 @@ for newer data requests.
 
 Normally when this happens, the old data can go away and no further action
 needs to be taken. In some cases however, modified data will need to be written
-out to save any changes that may have been made to that data.
+out to save any changes that may have been made to that data. This is done by
+giving the cache a block that does the work of saving the data into wherever
+is identified by the key.
 
-WIP
+```ruby
+cache_on_hand.set_save_block do |key, data|
+  # Code to save data at key goes here.
+end
+```
 
 ### Example
 

@@ -21,11 +21,17 @@ class CountedCache
     fail "A data loading block is required" unless block_given?
 
     @load_block = load_block
+    @save_block = Proc.new {}
     @key_space  = Hash.new {|hash, key| hash[key] = CountedClassItem.new(key)}
     @data_space = Array.new
     self.depth  = depth
     @hits       = 0
     @misses     = 0
+  end
+
+  # Set up the optional block called to save data.
+  def set_save_block(&save_block)
+    @save_block = save_block
   end
 
   # Get a data item.
@@ -66,7 +72,7 @@ private
     @data_space.sort_by!(&:count)
 
     while free != reserve
-      @data_space.shift.purge
+      @data_space.shift.purge(@save_block)
     end
   end
 

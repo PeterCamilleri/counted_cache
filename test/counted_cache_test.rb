@@ -40,7 +40,7 @@ class CountedCacheTest < Minitest::Test
     refute(an_item.empty?)
     assert_equal("foo", an_item.data)
     assert_equal(1, an_item.count)
-    an_item.purge
+    an_item.purge(Proc.new {})
     assert(an_item.empty?)
   end
 

@@ -23,7 +23,8 @@ class CountedClassItem
   end
 
   # Erase the data associated with the given key.
-  def purge
+  def purge(save_block)
+    save_block.call(@key, @data)
     @data = EMPTY
   end
 
