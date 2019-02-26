@@ -33,7 +33,33 @@ Where:
 * The argument is the optional cache depth, which is the number of data
 items kept in the cache.
 * The required block is used to fetch the data associated with the key when
-that data is needed, but not in the cache.
+that data is needed, but not currently in the cache.
+
+So how do we use a counted cache to get at our data? That is really simple:
+
+```ruby
+data = cache_on_hand[key]
+```
+
+That's it! And that is the complete essentials guide. There are a very few
+extras to determine how well the cache is working. The hits and misses
+properties record how many times the data was found in the cache (a hit) and
+how many times it had to be retrieved (a miss).
+
+### Example
+
+Consider the case of an application that uses embedded ruby (erb) files. This
+could look like:
+
+```ruby
+erb_cache = CountedCache.new {|name| ERB.new(IO.read(name))}
+
+# Other code omitted.
+
+view_text = erb_cache["my_file.html.erb"].result(a_binding)
+```
+
+The benchmark in the demo folder examines just such a scenario.
 
 ## Contributing
 1. Fork it
