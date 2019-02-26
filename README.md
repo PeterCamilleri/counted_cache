@@ -56,7 +56,7 @@ erb_cache = CountedCache.new {|name| ERB.new(IO.read(name))}
 
 # Other code omitted.
 
-view_text = erb_cache["my_file.html.erb"].result(a_binding)
+view_text = erb_cache["home_page/my_file.html.erb"].result(a_binding)
 ```
 
 The benchmark in the demo folder examines just such a scenario.
