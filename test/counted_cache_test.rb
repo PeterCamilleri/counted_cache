@@ -46,54 +46,68 @@ class CountedCacheTest < Minitest::Test
 
   def test_for_caching
     a_cache = CountedCache.new(2) { |key| key }
+    a_cache.set_save_block {|key, data| $save = data}
+    $save = ""
+
     assert_equal(2, a_cache.free)
     assert_equal(0, a_cache.hits)
     assert_equal(0, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("a", a_cache["a"])
     assert_equal(1, a_cache.free)
     assert_equal(0, a_cache.hits)
     assert_equal(1, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("a", a_cache["a"])
     assert_equal(1, a_cache.free)
     assert_equal(1, a_cache.hits)
     assert_equal(1, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("b", a_cache["b"])
     assert_equal(0, a_cache.free)
     assert_equal(1, a_cache.hits)
     assert_equal(2, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("a", a_cache["a"])
     assert_equal(0, a_cache.free)
     assert_equal(2, a_cache.hits)
     assert_equal(2, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("a", a_cache["a"])
     assert_equal(0, a_cache.free)
     assert_equal(3, a_cache.hits)
     assert_equal(2, a_cache.misses)
+    assert_equal("", $save)
 
     assert_equal("c", a_cache["c"])
     assert_equal(0, a_cache.free)
     assert_equal(3, a_cache.hits)
     assert_equal(3, a_cache.misses)
+    assert_equal("b", $save)
 
     assert_equal("a", a_cache["a"])
     assert_equal(0, a_cache.free)
     assert_equal(4, a_cache.hits)
     assert_equal(3, a_cache.misses)
+    assert_equal("b", $save)
 
     assert_equal("b", a_cache["b"])
     assert_equal(0, a_cache.free)
     assert_equal(4, a_cache.hits)
     assert_equal(4, a_cache.misses)
+    assert_equal("c", $save)
 
     assert_equal("c", a_cache["c"])
     assert_equal(0, a_cache.free)
     assert_equal(4, a_cache.hits)
     assert_equal(5, a_cache.misses)
+    assert_equal("b", $save)
+
   end
 
 end
