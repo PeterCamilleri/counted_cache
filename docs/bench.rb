@@ -18,6 +18,7 @@ $work = []
 file_names.each_with_index {|name, index| $work.concat(Array.new(file_counts[index], name)) }
 $work.shuffle!
 
+# Create a cache with only FIVE slots.
 $cache = CountedCache.new(5) {|name| ERB.new(IO.read(name))}
 
 def no_cache
