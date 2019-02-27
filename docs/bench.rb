@@ -38,3 +38,6 @@ Benchmark.ips do |x|
   x.report("with_cache") { with_cache }
   x.compare!
 end
+
+rate = (100.0 * $cache.hits) / ($cache.hits + $cache.misses)
+puts "Cache stats: #{$cache.hits} hits, #{$cache.misses} misses, #{"%4.1f" % rate}% rate."
