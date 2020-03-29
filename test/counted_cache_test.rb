@@ -1,8 +1,8 @@
 require_relative '../lib/counted_cache'
 require          'minitest/autorun'
-require          'minitest_visible'
 
 class CountedCacheTest < Minitest::Test
+
   def test_that_it_has_a_version_number
     refute_nil(::CountedCache::VERSION)
     assert(::CountedCache::VERSION.frozen?)
